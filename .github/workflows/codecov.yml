@@ -24,14 +24,5 @@ jobs:
         run: npm ci
 
       - name: Run Coverage
-        run: npm run coverage
+        run: npm run coverage; curl -Os https://uploader.codecov.io/latest/linux/codecov; chmod +x codecov; ./codecov;
 
-      - name: Codecov
-        uses: codecov/codecov-action@v3.1.0
-
-      - name: Upload Coverage Artifacts
-        uses: actions/upload-artifact@v3.0.0
-        with:
-          # Artifact name
-          name: coverage
-          path: coverage/
