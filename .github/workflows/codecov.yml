@@ -4,12 +4,12 @@ on:
   push:
     branches:
       - main
-  paths-ignore:
+    paths-ignore:
       - 'docs/**'
       - '**.md'
 
 jobs:
-  code-coverage:
+  run-tests:
     runs-on: ubuntu-latest
 
     strategy:
@@ -31,4 +31,3 @@ jobs:
           curl -Os https://uploader.codecov.io/latest/linux/codecov; \
           chmod +x codecov; \
           ./codecov;
-
