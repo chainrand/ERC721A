@@ -1,13 +1,15 @@
-name: ERC721A Code Coverage
+name: Code Coverage
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
+  paths-ignore:
+      - 'docs/**'
+      - '**.md'
 
 jobs:
-  run-tests:
+  code-coverage:
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,5 +26,9 @@ jobs:
         run: npm ci
 
       - name: Run Coverage
-        run: npm run coverage; curl -Os https://uploader.codecov.io/latest/linux/codecov; chmod +x codecov; ./codecov;
+        run: |
+          npm run coverage; \
+          curl -Os https://uploader.codecov.io/latest/linux/codecov; \
+          chmod +x codecov; \
+          ./codecov;
 
